@@ -1,0 +1,17 @@
+<%= form_with(model: [@product, @review], local: true) do |f| %>
+<div>
+    <% if @review.errors.present?%>
+    <%= @review.errors.full_messages.join(', ')%>
+    <% end %>
+</div>
+<div>
+    <%= form.label :body%><br>
+    <%= form.text_field :body %>
+</div>
+<div>
+    <%= form.label :rating %><br>
+    <%= form.text_area :rating%>
+    <br>
+</div>
+<%= form.submit %>
+<% end %>

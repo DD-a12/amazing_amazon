@@ -1,0 +1,13 @@
+<% @products.each do |product| %>
+<div>
+    <h2><%=link_to( product.title, product_path(product.id)) %></h2>
+    <% if product.tags.any? %>
+        <% product.tags.each do |tag| %>
+            <p class= 'badge badge-pill badge-primary'>  <%= tag.name %> </p>
+        <% end %>
+    <% end %><br>
+    <small> <%= product.user.full_name%> <small>
+    <p><%= product.description %></p>
+    <p>Posted <%= time_ago_in_words(product.created_at) %> ago</p>
+</div>
+<% end%>

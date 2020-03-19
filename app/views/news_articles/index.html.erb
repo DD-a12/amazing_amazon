@@ -1,0 +1,10 @@
+<h1>All News Articles</h1>
+<% @news_articles.each do |news_article| %>
+<div>
+    <h2><%=link_to( news_article.title, news_article_path(news_article.id)) %></h2>
+    <small> <%= news_article.user.full_name%> <small>
+    <p><%= news_article.description %></p>
+    <p><%= news_article.published_at %></p>
+    <p>Posted <%= time_ago_in_words(news_article.created_at) %> ago</p>
+</div>
+<% end%>

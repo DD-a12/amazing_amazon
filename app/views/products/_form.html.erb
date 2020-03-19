@@ -1,0 +1,24 @@
+<%= form_with(model: @product, local: true) do |form|%>
+<div>
+    <% if @product.errors.present?%>
+    <%= @product.errors.full_messages.join(', ')%>
+    <% end %>
+</div>
+<div>
+    <%= form.label :title%><br>
+    <%= form.text_field :title %>
+</div>
+<div>
+    <%= form.label :description %><br>
+    <%= form.text_area :description, cols: 50, rows:5%>
+    <br>
+</div>
+<div>
+    <%= form.label :price %><br>
+    <%= form.text_field :price%>
+    <br>
+    <%= form.label :tag_names %>
+    <%= form.text_area :tag_names %>
+</div>
+<%= form.submit %>
+<% end %>

@@ -1,0 +1,52 @@
+<ul class="review-list">
+    <% @reviews.each do |review| %>
+        <% if review.hidden == false || current_user == review.product.user %>
+        <li>
+            <%= review.user.full_name %><br>
+            <%= review.body %> <br>
+           Rating: <%= review.rating%> <br>
+        <% if review.product.user == current_user %>
+            <% if review.hidden == false %>
+                <%= link_to 'Hide', hidden_review_path(@product, review), method: :patch %> 
+            <% else %>
+                <%= link_to 'Show', hidden_review_path(@product, review), method: :patch %>
+            <% end %>
+        <% end %>
+        <% if can? :crud, review %>
+            <small>
+                <%= link_to(
+                    "Delete",
+                    product_review_path(@product, review),
+                    method: :delete,
+                    data: {
+                        confirm: "Are you sure?"
+                    }
+            ) %>
+                <%= link_to 'Edit', edit_product_review_path(@product, review)%>
+            </small><br>
+            <% end %>
+            
+            <% if user_signed_in? && can?(:like, review) %>
+            <% like = current_user.likes.find_by_review_id(review) %>    
+                <% if like  %>
+                    <small>
+                        <%= link_to 'Unlike', review_like_path(review, like), method: :delete %>
+                    </small>
+                <% else %>
+                    <small>
+                        <%= link_to 'Like', review_likes_path(review), method: :post %>
+                    </small>
+                <% end %>
+            <% end %>
+            <p>  Voted <%= review.votes.count %> </p>
+            <small> <%= pluralize review.likes.count, "like"%> </small><br>
+            
+            <small>
+                reviewed <%= time_ago_in_words(review.created_at) %> ago 
+            </small>
+        
+        </li>
+        <%end%>
+    <% end %>
+</ul>
+</section>

@@ -1,0 +1,21 @@
+<%= form_with(model: @user, local: true) do |f| %>
+    <% if @user.errors.any? %>
+        <%= @user.errors.full_messages.join(', ') %>
+    <%end%>
+    <div>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, placeholder: "#{@user.first_name}"%>
+    </div>
+
+    <div>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name,placeholder: "#{@user.last_name}" %>
+    </div>
+
+    <div>
+    <%= f.label :email %>
+    <%= f.text_field :email,placeholder: "#{@user.email}" %>
+    </div>
+     <%= link_to 'Change password', edit_password_path(@user) %><br>
+    <%= f.submit  %>
+<%end%>

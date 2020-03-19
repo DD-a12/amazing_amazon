@@ -1,0 +1,13 @@
+<h1>news_article</h1>
+<h1><%= @news_article.title %></h1>
+<p><%= @news_article.user.full_name %></p>
+<p><%= @news_article.description %></p>
+<p><%= @news_article.published_at %></p>
+<p>Asked <%= time_ago_in_words(@news_article.created_at) %> ago</p>
+<p>Last edited <%= time_ago_in_words(@news_article.updated_at) %></p>
+
+<% if can? :crud, @news_article  %>
+    <%= link_to("Delete", news_article_path(@news_article), 
+        method: :delete, data:{confirm:'Are you sure?' }) %><br />
+    <%= link_to 'Edit', edit_news_article_path(@news_article.id)%>
+<% end%>

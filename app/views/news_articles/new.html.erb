@@ -1,0 +1,22 @@
+<%= form_with(model: @news_article, local: true) do |form|%>
+<div>
+    <% if @news_article.errors.present?%>
+    <%= @news_article.errors.full_messages.join(', ')%>
+    <% end %>
+</div>
+<div>
+    <%= form.label :title%><br>
+    <%= form.text_field :title %>
+</div>
+<div>
+    <%= form.label :description %><br>
+    <%= form.text_area :description, cols: 50, rows:5%>
+    <br>
+</div>
+<div>
+    <%= form.label :published_at %><br>
+    <%= form.text_field:published_at%>
+    <br>
+</div>
+<%= form.submit %>
+<% end %>

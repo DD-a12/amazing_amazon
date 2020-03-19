@@ -1,0 +1,13 @@
+<p>Hello <%= @owner.full_name %>,</p>
+
+<p>You made a new product</p>
+  
+<p>Product title: <%= @product.title %></p>
+
+<p>Product descripions: <%= @product.description %></p>
+<%= link_to 'Click Here', "#{product_url(@product)}" %> to view the product.
+
+<p>Regards,</p>
+
+
+<p>Amazing Amazon Team</p>

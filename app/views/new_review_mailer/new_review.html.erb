@@ -1,0 +1,13 @@
+<p>Hello <%= @owner.full_name %>,</p>
+
+<p>You got a new review on your product</p>
+  
+<p>Review: <%= @review.body %></p>
+
+<p>Review author: <%= @review.user.full_name %></p>
+<%= link_to 'Click Here', "#{product_url(@product)}{dom_id(@review)}" %> to view the product.
+
+<p>Regards,</p>
+
+
+<p>Amazing Amazon Team</p>

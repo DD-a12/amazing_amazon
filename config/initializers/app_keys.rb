@@ -1,0 +1,2 @@
+ENV['EMAIL_USERNAME'] = 'hls112347@gmail.com'
+ENV['EMAIL_PASSWORD'] = 'Tkdghk!23'
